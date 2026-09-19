@@ -1,7 +1,13 @@
 /* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 package cn.zhuatech.travel.service;
 import jakarta.validation.Valid;import jakarta.validation.constraints.*;import org.springframework.stereotype.Service;import java.math.*;import java.util.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service public class EnterpriseTravelService {
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public Settlement settle(@Valid SettlementRequest req){
   BigDecimal eligible=BigDecimal.ZERO,companyPaid=BigDecimal.ZERO,rejected=BigDecimal.ZERO;List<ItemResult> items=new ArrayList<>();List<String> violations=new ArrayList<>();
   for(var item:req.items()){
@@ -19,11 +25,26 @@ import jakarta.validation.Valid;import jakarta.validation.constraints.*;import o
   return new Settlement(req.tripNo(),money(eligible),money(companyPaid),money(rejected),money(employeePayable),money(employeeRecoverable),items,violations,
     violations.isEmpty()?"READY_FOR_SETTLEMENT":"REVIEW_REQUIRED");
  }
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  private BigDecimal money(BigDecimal v){return v.setScale(2,RoundingMode.HALF_UP);}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record SettlementRequest(@NotBlank String tripNo,@NotNull @DecimalMin("0") BigDecimal advanceAmount,@NotEmpty List<@Valid ExpenseItem> items){}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record ExpenseItem(@NotBlank String category,@NotNull @DecimalMin("0") BigDecimal amount,@NotNull @DecimalMin("0") BigDecimal policyLimit,
    boolean receiptRequired,boolean receiptAvailable,boolean companyPaid,boolean businessRelated){}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record ItemResult(String category,BigDecimal claimed,BigDecimal approved,List<String> reasons){}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record Settlement(String tripNo,BigDecimal employeeEligible,BigDecimal companyPaid,BigDecimal rejected,BigDecimal employeePayable,
    BigDecimal employeeRecoverable,List<ItemResult> items,List<String> violations,String decision){}
 }

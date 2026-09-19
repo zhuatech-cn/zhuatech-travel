@@ -5,8 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class TravelBookingReleaseService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result assess(Request request) {
         var blockers = new ArrayList<String>();
         var actions = new ArrayList<String>();
@@ -25,11 +31,20 @@ public class TravelBookingReleaseService {
         return new Result(decision, List.copyOf(blockers), List.copyOf(actions));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum Decision { BOOK, REVIEW, BLOCKED }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(String requestId, boolean policyCompliant, boolean managerApproved,
                           boolean budgetAvailable, boolean travelerProfileComplete,
                           boolean itineraryRiskReviewed, boolean visaRequired, boolean visaValid,
                           boolean preferredSupplierUsed, boolean advanceReconciled,
                           boolean emergencyContactPresent, boolean auditReady) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(Decision decision, List<String> blockers, List<String> actions) {}
 }

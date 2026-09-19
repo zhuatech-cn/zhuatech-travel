@@ -6,8 +6,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import java.math.*;
 import java.util.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class DomainInsightService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Map<String,Object> analyze(InsightRequest req){
         Map<String,Object> result=new LinkedHashMap<>();
         List<String> violations=new ArrayList<>();
@@ -16,6 +22,12 @@ if(!req.hotelWithinPolicy())violations.add("住宿超过差标");if(!req.transpo
 result.put("variance",req.budget().subtract(req.estimatedCost()));result.put("violations",violations);result.put("decision",violations.size()>=2?"BLOCK":violations.isEmpty()?"APPROVE":"REVIEW");
         return result;
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private BigDecimal rate(long numerator,long denominator){return denominator==0?BigDecimal.ZERO:BigDecimal.valueOf(numerator).multiply(BigDecimal.valueOf(100)).divide(BigDecimal.valueOf(denominator),2,RoundingMode.HALF_UP);}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record InsightRequest(@DecimalMin("0.0") BigDecimal budget, @DecimalMin("0.0") BigDecimal estimatedCost, boolean hotelWithinPolicy, boolean transportWithinPolicy, boolean receiptAvailable){}
 }
