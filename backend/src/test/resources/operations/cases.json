@@ -1,0 +1,50 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "REVIEW",
+      "mealAllowance": "#240",
+      "hotelAmount": "#600",
+      "payable": "#340"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "advance": "1000"
+    },
+    "expected": {
+      "advanceReturn": "#160",
+      "payable": "#0"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "providedMealPct": "100"
+    },
+    "expected": {
+      "mealAllowance": "#0",
+      "payable": "#100"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "nights": "4"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "days": "0",
+      "nights": "0",
+      "advance": "0"
+    },
+    "expected": {
+      "payable": "#0"
+    },
+    "error": false
+  }
+]
